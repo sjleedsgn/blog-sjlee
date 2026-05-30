@@ -1,65 +1,103 @@
-import Image from "next/image";
+import Link from "next/link";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import AboutSection from "@/components/AboutSection";
+import { getAllPosts } from "@/lib/posts";
 
 export default function Home() {
+  const recentPosts = getAllPosts().slice(0, 4);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-bg text-ink">
+      <Nav />
+
+      <main className="page-enter mx-auto w-full max-w-[920px] px-6 lg:px-0">
+        {/* HERO */}
+        <header className="relative pb-[80px] pt-[120px]">
+          <h1 className="text-[36px] md:text-[60px] font-bold leading-[1.24] tracking-[-1.2px] md:tracking-[-2.1px] break-keep">
+            <span className="block">제품을 명확하게 만드는</span>
+            <span className="block">
+              <span className="highlight-enter">
+                프로덕트 디자이너
+              </span>
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-[28px] text-[18px] leading-[1.6] text-ink-soft max-w-[580px]">
+            니즈에 의해 요구된 기능과, 보이지 않는 니즈의 기능,
+            <br />
+            사용자와 비즈니스가 만나는 지점을 설계합니다.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          <div className="mt-[40px] flex flex-wrap gap-[10px]">
+            {["Product Design", "B2B", "Design System"].map((tag) => (
+              <span
+                key={tag}
+                className="font-ibm flex h-[30px] items-center rounded-full bg-ink px-[12px] text-[13px] font-medium tracking-[0.78px] text-bg"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </header>
+
+        <hr className="border-line" />
+
+        <AboutSection />
+
+        <hr className="border-line" />
+
+        {/* WRITING */}
+        <section id="writing" className="py-[90px]">
+          <div className="grid gap-[64px] lg:grid-cols-[200px_1fr]">
+            <div>
+              <p className="font-ibm text-[11.5px] tracking-[1.15px] text-[#555870]">
+                Writing
+              </p>
+              <h2 className="mt-2 text-[22px] font-bold tracking-[-0.44px]">
+                글
+              </h2>
+            </div>
+
+            <div>
+              <ul className="divide-y divide-line-soft">
+                {recentPosts.map((post) => (
+                  <li key={post.slug}>
+                    <Link
+                      href={`/writing/${post.slug}`}
+                      className="group flex items-baseline gap-[36px] py-[20px]"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[17px] font-bold tracking-[-0.255px] text-ink transition-colors group-hover:text-[#5b8eb8]">
+                          {post.title}
+                        </p>
+                        <p className="mt-2 text-[15px] text-muted">
+                          {post.excerpt}
+                        </p>
+                      </div>
+                      <span className="font-ibm shrink-0 text-[12px] tracking-[0.24px] text-muted whitespace-nowrap">
+                        {post.date}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-[30px] flex justify-center">
+                <Link
+                  href="/writing"
+                  className="flex items-center gap-[2px] rounded-full border border-line bg-white px-[14px] py-[7px] text-[12px] font-semibold tracking-[0.72px] text-ink transition-shadow hover:shadow-[0px_0px_0px_2px_rgba(224,220,220,0.25),0px_2px_4px_0px_rgba(0,0,0,0.08)]"
+                >
+                  모든 글 보기
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none" className="shrink-0">
+                    <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+
+      <Footer />
     </div>
   );
 }

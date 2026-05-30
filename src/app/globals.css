@@ -1,26 +1,218 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-bg: #f7f7fc;
+  --color-surface: #ffffff;
+  --color-ink: #252835;
+  --color-ink-soft: #555870;
+  --color-muted: #7f8198;
+  --color-faint: #aaadb9;
+  --color-line: #e0e2ea;
+  --color-line-soft: #ebebf0;
+  --color-accent: #eac94f;
+  --font-sans: var(--font-noto-sans-kr), system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f7fc;
+  color: #1e1f2a;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+
+.font-ibm {
+  font-family: var(--font-ibm), system-ui, sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.page-enter {
+  animation: page-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@layer components {
+  .prose {
+    color: #464858;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .prose > * + * {
+    margin-top: 20px;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    color: #252835;
+  }
+
+  .prose h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .prose h2 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .prose h3 {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .prose h4 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  .prose ul {
+    list-style: disc;
+    padding-left: 25.5px;
+  }
+
+  .prose ol {
+    list-style: decimal;
+    padding-left: 25.5px;
+  }
+
+  .prose li {
+    line-height: 1.6;
+  }
+
+  .prose strong {
+    font-weight: 700;
+  }
+
+  .prose em {
+    font-style: italic;
+  }
+
+  .prose a {
+    text-decoration: underline;
+    text-decoration-color: var(--color-line);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s;
+  }
+
+  .prose a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .prose img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+  }
+
+  .prose figure {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .prose figcaption {
+    font-size: 13px;
+    color: var(--color-muted);
+    text-align: center;
+  }
+
+  .prose blockquote {
+    border-left: 2px solid var(--color-line);
+    padding-left: 1.25em;
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  .prose code {
+    font-family: var(--font-mono), monospace;
+    font-size: 14px;
+    background: var(--color-line-soft);
+    color: var(--color-ink);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+  }
+
+  .prose pre {
+    background: var(--color-ink);
+    color: var(--color-bg);
+    padding: 1.25em 1.5em;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 14px;
+  }
+
+  .prose pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+
+  .prose hr {
+    border: none;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .prose table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+
+  .prose th {
+    text-align: left;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-ink);
+  }
+
+  .prose td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--color-line-soft);
+  }
+}
+
+@keyframes highlight-expand {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.highlight-enter {
+  display: inline-block;
+  position: relative;
+  isolation: isolate;
+}
+
+.highlight-enter::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 29px;
+  background: #feea97;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: highlight-expand 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  z-index: -1;
 }
