@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 export default function NavLinks() {
   const pathname = usePathname();
 
-  const handleTopClick = (e: React.MouseEvent) => {
-    if (pathname === "/") {
+  const handleTopClick = (e: React.MouseEvent, path: string) => {
+    if (pathname === path) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -18,13 +18,14 @@ export default function NavLinks() {
       <div className="flex gap-3 md:gap-6 font-ibm">
         <Link
           href="/"
-          onClick={handleTopClick}
+          onClick={(e) => handleTopClick(e, "/")}
           className={`text-[13px] font-medium tracking-[0.78px] transition-colors hover:text-[#5b8eb8] ${pathname === "/" ? "text-ink" : "text-[#91939E]"}`}
         >
           About
         </Link>
         <Link
           href="/writing"
+          onClick={(e) => handleTopClick(e, "/writing")}
           className={`text-[13px] font-medium tracking-[0.78px] transition-colors hover:text-[#5b8eb8] ${pathname.startsWith("/writing") ? "text-ink" : "text-[#91939E]"}`}
         >
           Writing

@@ -42,8 +42,8 @@ export default function Home() {
         <hr className="border-line" />
 
         {/* WRITING */}
-        <section id="writing" className="py-[90px]">
-          <div className="grid gap-[64px] lg:grid-cols-[200px_1fr]">
+        <section id="writing" className="py-[64px] md:py-[90px]">
+          <div className="grid gap-[40px] md:gap-[64px] lg:grid-cols-[200px_1fr]">
             <div>
               <p className="font-ibm text-[11.5px] tracking-[1.15px] text-[#555870]">
                 Writing

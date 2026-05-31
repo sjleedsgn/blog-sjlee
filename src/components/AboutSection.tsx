@@ -102,10 +102,10 @@ export default function AboutSection() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section id="about" className="py-[90px]">
+    <section id="about" className="py-[64px] md:py-[90px]">
       {!open ? (
         /* 닫힌 상태 */
-        <div className="grid gap-[64px] lg:grid-cols-[200px_1fr]">
+        <div className="grid gap-[40px] md:gap-[64px] lg:grid-cols-[200px_1fr]">
           <SectionLabel label="About" heading="소개" />
           <div className="flex flex-col gap-[40px] items-center min-w-0 max-w-[656px]">
             <AboutBody />
@@ -116,7 +116,7 @@ export default function AboutSection() {
         /* 열린 상태 */
         <div className="flex flex-col">
           {/* About 행 */}
-          <div className="grid gap-[64px] lg:grid-cols-[200px_1fr] w-full">
+          <div className="grid gap-[40px] md:gap-[64px] lg:grid-cols-[200px_1fr] w-full">
             <SectionLabel label="About" heading="소개" />
             <div className="flex flex-col items-center max-w-[656px] min-w-0">
               <AboutBody />
@@ -124,7 +124,7 @@ export default function AboutSection() {
           </div>
 
           {/* Experience 행 */}
-          <div className="grid gap-[64px] lg:grid-cols-[200px_1fr] pt-[64px] pb-[24px]">
+          <div className="grid gap-[40px] md:gap-[64px] lg:grid-cols-[200px_1fr] pt-[40px] md:pt-[64px] pb-[24px]">
             <SectionLabel label="Experience" heading="경력" />
             <div className="flex flex-col gap-[40px] items-center max-w-[656px] min-w-0">
               <div className="flex flex-col w-full">

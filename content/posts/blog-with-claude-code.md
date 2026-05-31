@@ -1,6 +1,6 @@
 ---
 title: 블로그 제작기 w. claude code
-date: "2026-05-30"
+date: "2026-06-01"
 excerpt: Figma를 떠나 직접 만들어보며 알게 된, 핸드오프의 빈틈에 대하여.
 ---
 

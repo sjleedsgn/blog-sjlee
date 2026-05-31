@@ -19,6 +19,15 @@ export function getAllPosts(): Post[] {
     .sort((a, b) => (a.date > b.date ? -1 : 1));
 }
 
+export function getAdjacentPosts(slug: string): { prev: Post | null; next: Post | null } {
+  const posts = getAllPosts(); // 최신순 정렬
+  const index = posts.findIndex((p) => p.slug === slug);
+  return {
+    prev: index < posts.length - 1 ? posts[index + 1] : null, // 이전 글 = 더 오래된 글
+    next: index > 0 ? posts[index - 1] : null,               // 다음 글 = 더 최신 글
+  };
+}
+
 export function getPostBySlug(slug: string): Post {
   const fullPath = path.join(postsDir, `${slug}.md`);
   const raw = fs.readFileSync(fullPath, "utf8");
