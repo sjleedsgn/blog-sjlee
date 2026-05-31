@@ -1,7 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { marked } from "marked";
 
@@ -40,8 +38,6 @@ export default async function PostPage({
 
   return (
     <div className="min-h-screen bg-bg text-ink">
-      <Nav />
-
       <main className="page-enter mx-auto w-full max-w-[920px] px-6 lg:px-0">
         <article className="py-16 lg:py-20">
           <div className="mx-auto max-w-2xl">
@@ -79,7 +75,6 @@ export default async function PostPage({
         </article>
       </main>
 
-      <Footer />
     </div>
   );
 }

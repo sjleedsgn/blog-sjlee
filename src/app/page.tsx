@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import AboutSection from "@/components/AboutSection";
 import { getAllPosts } from "@/lib/posts";
 
@@ -9,8 +7,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-bg text-ink">
-      <Nav />
-
       <main className="page-enter mx-auto w-full max-w-[920px] px-6 lg:px-0">
         {/* HERO */}
         <header className="relative pb-[80px] pt-[120px]">
@@ -97,7 +93,6 @@ export default function Home() {
         </section>
       </main>
 
-      <Footer />
     </div>
   );
 }
