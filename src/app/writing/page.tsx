@@ -16,7 +16,7 @@ export default function WritingPage() {
       <main className="page-enter mx-auto w-full max-w-[920px] px-6 lg:px-0">
         <section className="py-[90px]">
           <div className="grid gap-[64px] lg:grid-cols-[200px_1fr]">
-            <div className="sticky top-[84px] self-start">
+            <div className="lg:sticky lg:top-[84px] lg:self-start">
               <p className="font-ibm text-[11.5px] tracking-[1.15px] text-faint">
                 Writing
               </p>
