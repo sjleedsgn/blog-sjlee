@@ -16,9 +16,32 @@ const splineSansMono = Spline_Sans_Mono({
   weight: ["400", "500"],
 });
 
+const BASE_URL = "https://blog-sjlee.vercel.app";
+
 export const metadata: Metadata = {
-  title: "이상정 — Product Designer",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "이상정 — Product Designer",
+    template: "%s — 이상정",
+  },
   description: "5년 차 프로덕트 디자이너 이상정의 포트폴리오 & 블로그",
+  openGraph: {
+    title: "이상정 — Product Designer",
+    description: "5년 차 프로덕트 디자이너 이상정의 포트폴리오 & 블로그",
+    url: BASE_URL,
+    siteName: "이상정",
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "이상정 — Product Designer",
+    description: "5년 차 프로덕트 디자이너 이상정의 포트폴리오 & 블로그",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

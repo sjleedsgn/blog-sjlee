@@ -1,4 +1,5 @@
 ---
+status: draft
 title: 업무방식에 대한 고찰
 date: "2024-05-01"
 excerpt: 업무 우선순위와 디자인 우선순위 improved 이슈

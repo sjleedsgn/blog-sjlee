@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug, getAdjacentPosts } from "@/lib/posts";
+import { getAllPosts, getAllPostsIncludingDraft, getPostBySlug, getAdjacentPosts } from "@/lib/posts";
 import { marked } from "marked";
 
 export function generateStaticParams() {
-  return getAllPosts().map((post) => ({ slug: post.slug }));
+  return getAllPostsIncludingDraft().map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({
@@ -15,7 +15,22 @@ export async function generateMetadata({
   const { slug } = await params;
   try {
     const post = getPostBySlug(slug);
-    return { title: `${post.title} — 이상정`, description: post.excerpt };
+    return {
+      title: post.title,
+      description: post.excerpt,
+      openGraph: {
+        title: post.title,
+        description: post.excerpt,
+        url: `https://blog-sjlee.vercel.app/writing/${slug}`,
+        type: "article",
+        publishedTime: post.date,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post.title,
+        description: post.excerpt,
+      },
+    };
   } catch {
     return {};
   }

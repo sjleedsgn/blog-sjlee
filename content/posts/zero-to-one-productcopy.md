@@ -1,4 +1,5 @@
 ---
+status: draft
 title: 제품PRD
 date: "2026-05-10"
 excerpt: 스타트업 초기 제품에서 디자이너가 속도보다 우선해야 할 것.

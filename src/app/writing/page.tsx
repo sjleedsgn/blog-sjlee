@@ -2,8 +2,14 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 
 export const metadata = {
-  title: "글 — 이상정",
+  title: "글",
   description: "디자인, 제품, 그리고 일하는 방식에 대한 기록",
+  openGraph: {
+    title: "글 — 이상정",
+    description: "디자인, 제품, 그리고 일하는 방식에 대한 기록",
+    url: "https://blog-sjlee.vercel.app/writing",
+    type: "website",
+  },
 };
 
 export default function WritingPage() {
