@@ -45,7 +45,7 @@ body {
 }
 
 .page-enter-delayed {
-  animation: page-enter 0.25s ease-out 0.16s both;
+  animation: page-enter 0.25s ease-out 0.12s both;
 }
 
 @layer components {
