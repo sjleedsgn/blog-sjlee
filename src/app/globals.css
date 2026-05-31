@@ -44,6 +44,10 @@ body {
   animation: page-enter 0.25s ease-out both;
 }
 
+.page-enter-delayed {
+  animation: page-enter 0.25s ease-out 0.08s both;
+}
+
 @layer components {
   .prose {
     color: #464858;

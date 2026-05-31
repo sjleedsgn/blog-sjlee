@@ -9,7 +9,7 @@ export const metadata = {
 export default function WritingPage() {
   return (
     <div className="min-h-screen bg-bg text-ink">
-      <main className="page-enter mx-auto w-full max-w-[920px] px-6 lg:px-0">
+      <main className="page-enter-delayed mx-auto w-full max-w-[920px] px-6 lg:px-0">
         <section className="py-[90px]">
           <div className="grid gap-[64px] lg:grid-cols-[200px_1fr]">
             <div className="lg:sticky lg:top-[84px] lg:self-start">
