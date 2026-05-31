@@ -27,7 +27,7 @@ export default function Nav() {
   };
 
   return (
-    <nav className={`sticky top-0 z-50 border-b border-line transition-colors duration-200 ${solid ? "bg-bg" : "bg-bg/80 backdrop-blur-[2px]"}`}>
+    <nav className={`sticky top-0 z-50 border-b border-line transition-colors duration-200 ${solid ? "bg-bg" : "bg-bg md:bg-bg/80 md:backdrop-blur-[2px]"}`}>
       <div className="mx-auto flex h-[60px] max-w-[920px] items-center justify-between px-6 lg:px-0">
         <Link
           href="/"
