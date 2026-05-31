@@ -2,9 +2,22 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 export default function Nav() {
   const pathname = usePathname();
+  const [solid, setSolid] = useState(false);
+  const isFirst = useRef(true);
+
+  useEffect(() => {
+    if (isFirst.current) {
+      isFirst.current = false;
+      return;
+    }
+    setSolid(true);
+    const t = setTimeout(() => setSolid(false), 300);
+    return () => clearTimeout(t);
+  }, [pathname]);
 
   const handleTopClick = (e: React.MouseEvent) => {
     if (pathname === "/") {
@@ -14,7 +27,7 @@ export default function Nav() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-line bg-bg/80 backdrop-blur-[2px]">
+    <nav className={`sticky top-0 z-50 border-b border-line transition-colors duration-200 ${solid ? "bg-bg" : "bg-bg/80 backdrop-blur-[2px]"}`}>
       <div className="mx-auto flex h-[60px] max-w-[920px] items-center justify-between px-6 lg:px-0">
         <Link
           href="/"
